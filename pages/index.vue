@@ -52,15 +52,18 @@ async function generateImage() {
   showImage.value = false;
   showHint.value = false;
   isLoading.value = true;
-  const response = await useFetch("http://localhost:5000/api/generateImage", {
-    method: "post",
-    body: {
-      prompt: generateWhat,
-    },
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await useFetch(
+    "https://image-generator-api-5qjb.onrender.com/api/generateImage",
+    {
+      method: "post",
+      body: {
+        prompt: generateWhat,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   isLoading.value = false;
 
   if (response.data._value["image"]) {
